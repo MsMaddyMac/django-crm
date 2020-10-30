@@ -4,15 +4,15 @@
   <title>CRM</title>
 <head>
 <body>
-  <h1>Navbar</h1>
-  <hr>
+{% comment %} this will include the navbar file in the layout which has been separated because how full of code it will become {% endcomment %}
+  {% include 'accounts/navbar.html' %}
 
   {% block content %}
   
   
   {% endblock%}
 
-  </hr>
+  <hr>
   <h5>Footer</h5>
 </body>
 </html>
