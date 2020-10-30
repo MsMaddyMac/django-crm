@@ -1,11 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>CRM</title>
-<head>
-<body>
-  <h1>Dashboard</h1>
-</body>
-</html>
+{% extends 'accounts/main.html' %}
+{% comment %} tells this child file where to inherit from by pointing to the file path.{% endcomment %}
+
+
+{% block content %}
+
+<h1>Dashboard</h1>
+
+{% endblock %}
+
+{% comment %} tells Django where we want our content to sit within the block {% endcomment %}
+
+
 
 {% comment %} each time you create a template you need to update the def in the views.py to render the template. {% endcomment %}
+
