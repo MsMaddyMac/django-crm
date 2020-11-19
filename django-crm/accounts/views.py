@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.forms import inlineformset_factory
 from .models import *
 from .forms import *
+from .filters import OrderFilter
 
 # Create your views (pages) here.
 # this is a view which will show the string passed into the HttpResponse() when someone visits that particular page(view)
@@ -35,7 +36,10 @@ def customer(request, pk):
   orders = customer.order_set.all()
   total_orders = orders.count()
   
-  context = {'customer': customer, 'orders': orders, 'total_orders': total_orders}
+  myFilter = OrderFilter(request.GET, queryset=orders)
+  orders = myFilter.qs
+  
+  context = {'customer': customer, 'orders': orders, 'total_orders': total_orders, 'myFilter': myFilter}
   return render(request, 'accounts/customer.html', context)
 
 def createOrder(request, pk):
