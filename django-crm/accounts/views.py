@@ -62,5 +62,14 @@ def updateOrder(request, pk):
   context = {'form': form}
   return render(request, 'accounts/order_form.html', context)
 
+def deleteOrder(request, pk):
+  order = Order.objects.get(id=pk)
+  if request.method == 'POST':
+    order.delete()
+    return redirect('/')
+  
+  context = {'order': order}
+  return render(request, 'accounts/delete.html', context)
+
 # once you create your views import them into the urls.py file you created in this same directory
 
