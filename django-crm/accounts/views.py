@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.forms import inlineformset_factory
+from django.contrib.auth.forms import UserCreationForm
+
 from .models import *
 from .forms import *
 from .filters import OrderFilter
@@ -13,7 +15,14 @@ from .filters import OrderFilter
 # this is what the def changes to if you have a template to render on that page(view)
 # you point it to the file path of the template within the templates directory. In this case within the templates directory there is an accounts directory and within that a dashboard.html file
 def registerPage(request):
-  context = {}
+  form = CreateUserForm()
+  
+  if request.method == 'POST':
+    form = CreateUserForm(request.POST)
+    if form.is_valid():
+      form.save()
+      
+  context = {'form': form}
   return render(request, 'accounts/register.html', context)
 
 def loginPage(request):
