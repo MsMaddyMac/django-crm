@@ -12,6 +12,14 @@ from .filters import OrderFilter
 
 # this is what the def changes to if you have a template to render on that page(view)
 # you point it to the file path of the template within the templates directory. In this case within the templates directory there is an accounts directory and within that a dashboard.html file
+def registerPage(request):
+  context = {}
+  return render(request, 'accounts/register.html', context)
+
+def loginPage(request):
+  context = {}
+  return render(request, 'accounts/login.html', context)
+
 def home(request):
   orders = Order.objects.all()
   customers = Customer.objects.all()
