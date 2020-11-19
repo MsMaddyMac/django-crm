@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import *
+from .forms import *
 
 # Create your views (pages) here.
 # this is a view which will show the string passed into the HttpResponse() when someone visits that particular page(view)
@@ -35,6 +36,11 @@ def customer(request, pk):
   
   context = {'customer': customer, 'orders': orders, 'total_orders': total_orders}
   return render(request, 'accounts/customer.html', context)
+
+def createOrder(request):
+  form = OrderForm()
+  context = {'form': form}
+  return render(request, 'accounts/order_form.html', context)
 
 # once you create your views import them into the urls.py file you created in this same directory
 
