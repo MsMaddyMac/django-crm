@@ -13,21 +13,7 @@ class Customer(models.Model):
   
   def __str__(self):
       return str(self.name)
-    
-# def create_profile(sender, instance, created, **kwargs): 
-#     if created: 
-#       Profile.objects.create(user=instance)
-#       print('Profile created!')
-
-# post_save.connect(create_profile, sender=User)
-      
-# def update_profile(sender, instance, created, **kwargs):
-#     if created == False:
-#       instance.profile.save()
-#       print('Profile updated!')
-      
-# post_save.connect(create_profile, sender=User)
-      
+          
 class Tag(models.Model):
   name = models.CharField(max_length=200, null=True)
   
